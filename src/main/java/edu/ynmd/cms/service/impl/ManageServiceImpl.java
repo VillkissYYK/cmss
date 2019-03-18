@@ -3,9 +3,11 @@ package edu.ynmd.cms.service.impl;
 import edu.ynmd.cms.dao.CarouselDao;
 import edu.ynmd.cms.dao.NewsDao;
 import edu.ynmd.cms.dao.Singlepagedao;
+import edu.ynmd.cms.dao.UsersDao;
 import edu.ynmd.cms.model.Carousel;
 import edu.ynmd.cms.model.News;
 import edu.ynmd.cms.model.Singlepage;
+import edu.ynmd.cms.model.Users;
 import edu.ynmd.cms.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,9 @@ public class ManageServiceImpl implements ManageService {
 
     @Autowired
     private Singlepagedao singlepagedao;
+
+    @Autowired
+    private UsersDao usersDao;
 
 
     @Override
@@ -161,5 +166,10 @@ public class ManageServiceImpl implements ManageService {
     @Override
     public List<Singlepage> getSinglepageList() {
         return singlepagedao.findAll();
+    }
+
+    @Override
+    public Users findUserByUsernameAndPassword(String username, String password) {
+        return usersDao.getUsersByUsernameAndPassword(username,password);
     }
 }

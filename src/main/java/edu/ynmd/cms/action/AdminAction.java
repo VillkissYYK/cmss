@@ -28,8 +28,8 @@ public class AdminAction {
 
     @PostMapping("addNews")
     @ResponseBody
-    public boolean addNews(@RequestBody News news) throws Exception {
-        news.setPbdate((System.currentTimeMillis()));
+    public boolean addNews(@RequestBody News news) throws Exception{
+        news.setPbdate(System.currentTimeMillis());
         return manageService.addNews(news);
 
     }

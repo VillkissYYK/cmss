@@ -3,6 +3,7 @@ package edu.ynmd.cms.service;
 import edu.ynmd.cms.model.Carousel;
 import edu.ynmd.cms.model.News;
 import edu.ynmd.cms.model.Singlepage;
+import edu.ynmd.cms.model.Users;
 
 import java.util.List;
 
@@ -25,5 +26,7 @@ public interface ManageService {
     public boolean updateSinglepage(Singlepage singlepage);
     public Singlepage getSinglepage(String id);
     public List<Singlepage> getSinglepageList();
+
+    public Users findUserByUsernameAndPassword(String username, String password);
 
 }
