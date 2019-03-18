@@ -3,16 +3,15 @@ package edu.ynmd.cms.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 public class News {
     private String newsid;
     private String title;
-    private Timestamp pbdate;
+    private Long pbdate;
     private String content;
     private String author;
-    private Integer px;
+    private Short px;
 
     @Id
     @GeneratedValue(generator = "uuid2" )   //指定生成器名称
@@ -39,11 +38,11 @@ public class News {
 
     @Basic
     @Column(name = "pbdate")
-    public Timestamp getPbdate() {
+    public Long getPbdate() {
         return pbdate;
     }
 
-    public void setPbdate(Timestamp pbdate) {
+    public void setPbdate(Long pbdate) {
         this.pbdate = pbdate;
     }
 
@@ -69,11 +68,11 @@ public class News {
 
     @Basic
     @Column(name = "px")
-    public Integer getPx() {
+    public Short getPx() {
         return px;
     }
 
-    public void setPx(Integer px) {
+    public void setPx(Short px) {
         this.px = px;
     }
 

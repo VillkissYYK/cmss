@@ -1,20 +1,21 @@
 package edu.ynmd.cms.action;
 
+
+import edu.ynmd.cms.model.Carousel;
 import edu.ynmd.cms.model.News;
+import edu.ynmd.cms.model.Singlepage;
 import edu.ynmd.cms.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
-
+import java.util.HashMap;
 import java.util.List;
-
-
+import java.util.Map;
 
 @Controller
 @CrossOrigin
@@ -28,7 +29,7 @@ public class AdminAction {
     @PostMapping("addNews")
     @ResponseBody
     public boolean addNews(@RequestBody News news) throws Exception {
-        news.setPbdate(new Timestamp(System.currentTimeMillis()));
+        news.setPbdate((System.currentTimeMillis()));
         return manageService.addNews(news);
 
     }
@@ -54,6 +55,7 @@ public class AdminAction {
         return manageService.getNews(news.getNewsid());
     }
 
+
     @GetMapping("getNewsList")
     @ResponseBody
     public List<News> getNewsList() throws Exception {
@@ -61,10 +63,35 @@ public class AdminAction {
         return manageService.getNewsList();
     }
 
+
     @PostMapping("fileUpload")
     @ResponseBody
-    public String fileUpload(MultipartFile file) throws Exception{
+    public Map fileUpload(MultipartFile file) throws Exception {
+        String filename=file.getOriginalFilename();
+        System.out.printf("接收到的文件名是 "+filename);
+        //获得文件的后缀
+        int index=filename.lastIndexOf(".");
+        String suffexname=filename.substring(index);
+        String tosavefilename=String.valueOf(System.currentTimeMillis())+suffexname;
 
+
+        //检测上传文件目录是否存在
+        String savepath="D:\\springbootupload\\";
+        File f=new File(savepath);
+        if(!f.exists()){
+            f.mkdir();
+        }
+        //将上传的文件保存到该文件加下
+        file.transferTo(new File(savepath+tosavefilename));
+        Map m=new HashMap();
+        m.put("pic",tosavefilename);
+        return m;
+    }
+
+
+    @PostMapping("tofileUpload")
+    @ResponseBody
+    public Map tofileUpload(MultipartFile file) throws Exception {
         String filename=file.getOriginalFilename();
         System.out.printf("接收到的文件名是 "+filename);
         //获得文件的猴嘴
@@ -81,10 +108,10 @@ public class AdminAction {
         }
         //将上传的文件保存到该文件加下
         file.transferTo(new File(savepath+tosavefilename));
-
-        return tosavefilename;
+        Map m=new HashMap();
+        m.put("img",tosavefilename);
+        return m;
     }
-
 
 
 
@@ -94,24 +121,24 @@ public class AdminAction {
     public String ckeditorUpload(@RequestParam("upload") MultipartFile file, String CKEditorFuncNum) throws Exception {
 
         if (!file.isEmpty()) {
-            String finename=file.getOriginalFilename();
-            String suffixname=file.getOriginalFilename().substring(finename.lastIndexOf("."));
+            String finename = file.getOriginalFilename();
+            String suffixname = file.getOriginalFilename().substring(finename.lastIndexOf("."));
 
-            finename=String.valueOf(System.currentTimeMillis())+suffixname;
+            finename = String.valueOf(System.currentTimeMillis()) + suffixname;
 
-            String filepath="d:/springbootupload/";
+            String filepath = "d:/springbootupload/";
 
-            File tf=new File(filepath);
-            if(!tf.exists()){
+            File tf = new File(filepath);
+            if (!tf.exists()) {
                 tf.mkdir();
             }
-            String savefile=filepath+finename;
+            String savefile = filepath + finename;
             try {
                 file.transferTo(new File(savefile));
 
-                String url="http://localhost/"+finename;
+                String url = "http://localhost/" + finename;
 
-                return "{\"uploaded\":1,\"fileName\":\""+savefile+"\",\"url\":\"" + url + "\"}";
+                return "{\"uploaded\":1,\"fileName\":\"" + savefile + "\",\"url\":\"" + url + "\"}";
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -124,21 +151,69 @@ public class AdminAction {
             }
 
 
-
         }
 
 
         return "{\"uploaded\":0,\"error\":{\"message\":\"upload file is not success!\"}}";
     }
 
+    @PostMapping("addCarousel")
+    @ResponseBody
+    public boolean addCarousel(@RequestBody Carousel carousel) throws Exception{
+        return manageService.addCarousel(carousel);
+    }
 
+    @GetMapping("getCarouselList")
+    @ResponseBody
+    public  List<Carousel> getCarouselList() throws Exception{
+        return manageService.getCarouselList();
+    }
 
+    @PostMapping("deleteCarousel")
+    @ResponseBody
+    public boolean deleteCarousel(@RequestBody Carousel carousel)throws Exception {
+        return manageService.deleteCarousel(carousel.getCarouselid());
+    }
 
+    @PostMapping("updateCarousel")
+    @ResponseBody
+    public boolean updateCarousel(@RequestBody Carousel carousel)throws Exception {
+        return manageService.updateCarousel(carousel);
+    }
 
+    @PostMapping("getSingleCarousel")
+    @ResponseBody
+    public Carousel getSingleCarousel(@RequestBody Carousel carousel)throws Exception {
+        return manageService.getCarousel(carousel.getCarouselid());
+    }
+
+    @PostMapping("addSinglepage")
+    @ResponseBody
+    public boolean Singlepage(@RequestBody Singlepage singlepage) throws  Exception{
+        return  manageService.addSinglepage(singlepage);
+    }
+
+    @GetMapping("getSinglepageList")
+    @ResponseBody
+    public List<Singlepage> getSinglepageList() throws Exception{
+        return  manageService.getSinglepageList();
+    }
+
+    @PostMapping("deleteSinglepage")
+    @ResponseBody
+    public boolean deleteSinglepage(@RequestBody Singlepage singlepage)throws Exception{
+        return  manageService.deleteSinglepage(singlepage.getSinglepageid());
+    }
+
+    @PostMapping("updateSinglepage")
+    @ResponseBody
+    public  boolean updateSinglepage(@RequestBody Singlepage singlepage)throws Exception{
+        return  manageService.updateSinglepage(singlepage);
+    }
+
+    @PostMapping("getSinglepage")
+    @ResponseBody
+    public  Singlepage getSinglepage(@RequestBody Singlepage singlepage)throws Exception{
+        return manageService.getSinglepage(singlepage.getSinglepageid());
+    }
 }
-
-
-
-
-
-
