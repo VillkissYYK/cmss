@@ -9,9 +9,14 @@ import edu.ynmd.cms.model.News;
 import edu.ynmd.cms.model.Singlepage;
 import edu.ynmd.cms.model.Users;
 import edu.ynmd.cms.service.ManageService;
+import edu.ynmd.cms.tools.Tools;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 @Service
 public class ManageServiceImpl implements ManageService {
@@ -172,4 +177,35 @@ public class ManageServiceImpl implements ManageService {
     public Users findUserByUsernameAndPassword(String username, String password) {
         return usersDao.getUsersByUsernameAndPassword(username,password);
     }
+
+    @Override
+    public String getCurrentUserId() {
+        String userid = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (Tools.isNullOrSpace(userid)) {
+            return null;
+        } else {
+            return userid;
+        }
+
+    }
+
+
+    @Override
+    public String getCurrentUserRole () {
+        String role = null;
+        Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        for (GrantedAuthority authority : authorities) {
+            role = authority.getAuthority();
+
+        }
+
+        if (Tools.isNullOrSpace(role)) {
+            return null;
+        } else {
+            return role;
+        }
+
+    }
+
 }
+

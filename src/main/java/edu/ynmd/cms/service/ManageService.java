@@ -27,6 +27,9 @@ public interface ManageService {
     public Singlepage getSinglepage(String id);
     public List<Singlepage> getSinglepageList();
 
-    public Users findUserByUsernameAndPassword(String username, String password);
+    public Users findUserByUsernameAndPassword(String username,String password);
+
+    public String getCurrentUserId();
+    public String getCurrentUserRole();
 
 }
