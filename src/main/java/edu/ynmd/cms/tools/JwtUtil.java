@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class JwtUtil {
     private static final Logger logger= LoggerFactory.getLogger(JwtUtil.class);
-    public static  final long EXPIRATION_TIME=3600_00;//3分钟
+    public static  final long EXPIRATION_TIME=7200_00;
     public static final String SECRET="admin123";
     public static final String TOKEN_PREFIX="Bearer";
     public static final String HEADER_STRING="Authorization";
