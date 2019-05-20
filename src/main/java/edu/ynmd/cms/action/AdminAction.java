@@ -76,7 +76,9 @@ public class AdminAction {
 
 
         //检测上传文件目录是否存在
-        String savepath="D:\\springbootupload\\";
+//        String savepath="sss";
+        String savepath="/root/project/picupload/";
+//        String savepath="D:\\springbootupload\\";
         File f=new File(savepath);
         if(!f.exists()){
             f.mkdir();
@@ -101,7 +103,9 @@ public class AdminAction {
 
 
         //检测上传文件目录是否存在
-        String savepath="D:\\springbootupload\\";
+        String savepath="/root/project/picupload/";
+//        String savepath="sss";
+//        String savepath="D:\\springbootupload\\";
         File f=new File(savepath);
         if(!f.exists()){
             f.mkdir();
@@ -126,7 +130,7 @@ public class AdminAction {
 
             finename = String.valueOf(System.currentTimeMillis()) + suffixname;
 
-            String filepath = "d:/springbootupload/";
+            String filepath = "/root/project/picupload/";
 
             File tf = new File(filepath);
             if (!tf.exists()) {
