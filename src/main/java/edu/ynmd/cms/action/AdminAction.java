@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -62,6 +63,47 @@ public class AdminAction {
 
         return manageService.getNewsList();
     }
+
+
+    @PostMapping("uploadNewsCoverpic")
+    @ResponseBody
+    public HashMap uploadNewsCoverpic(MultipartFile file, HttpServletRequest request) throws Exception{
+       HashMap m = new HashMap();
+        String filename= file.getOriginalFilename();
+        String newsid =request.getHeader("newsid");//将newsid放在http header
+
+        int index=filename.lastIndexOf(".");
+        String suffexname=filename.substring(index);
+        String tosavefilename=String.valueOf(System.currentTimeMillis())+suffexname;
+
+
+        //检测上传文件目录是否存在
+//        String savepath="sss";
+//        String savepath="/root/project/picupload/";
+        String savepath="D:\\springbootupload\\";
+        File f=new File(savepath);
+        if(!f.exists()){
+            f.mkdir();
+        }
+        //将上传的文件保存到该文件加下
+        file.transferTo(new File(savepath+tosavefilename));
+
+
+//        将上传的图片地址保存到数据库中
+        News toupdatenews=manageService.getNews(newsid);
+        if(toupdatenews!=null){
+            toupdatenews.setCoverpic(tosavefilename);
+            manageService.updateNews(toupdatenews);
+
+        }
+
+
+        m.put("filename",tosavefilename);
+        m.put("newsid",newsid);
+
+        return m;
+    }
+
 
 
     @PostMapping("fileUpload")
