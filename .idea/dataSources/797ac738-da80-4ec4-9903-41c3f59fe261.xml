@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="example">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="Carousel"/>
+    <table id="7" parent="2" name="News"/>
+    <table id="8" parent="2" name="Singlepage"/>
+    <table id="9" parent="2" name="Users"/>
+    <table id="10" parent="2" name="_Carousel_old_20190527"/>
+    <table id="11" parent="2" name="_News_old_20190527"/>
+    <table id="12" parent="2" name="_Singlepage_old_20190527"/>
+    <table id="13" parent="2" name="_Users_old_20190527"/>
+    <table id="14" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <column id="15" parent="6" name="carouselid">
+      <DataType>text(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="6" name="content">
+      <Position>1</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="17" parent="6" name="discription">
+      <Position>2</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="18" parent="6" name="pic">
+      <Position>3</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="19" parent="6" name="title">
+      <Position>4</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <index id="20" parent="6" name="sqlite_autoindex_Carousel_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>carouselid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="21" parent="6">
+      <ColNames>carouselid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Carousel_1</UnderlyingIndexName>
+    </key>
+    <column id="22" parent="7" name="newsid">
+      <DataType>text(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="7" name="author">
+      <Position>1</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="24" parent="7" name="content">
+      <Position>2</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="25" parent="7" name="pbdate">
+      <Position>3</Position>
+      <DataType>integer(255)|0</DataType>
+    </column>
+    <column id="26" parent="7" name="px">
+      <Position>4</Position>
+      <DataType>integer(255)|0</DataType>
+    </column>
+    <column id="27" parent="7" name="title">
+      <Position>5</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="28" parent="7" name="coverpic">
+      <Position>6</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="29" parent="7" name="remark">
+      <Position>7</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="30" parent="7" name="sqlite_autoindex_News_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>newsid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="31" parent="7">
+      <ColNames>newsid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_News_1</UnderlyingIndexName>
+    </key>
+    <column id="32" parent="8" name="singlepageid">
+      <DataType>text(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="8" name="detail">
+      <Position>1</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="34" parent="8" name="img">
+      <Position>2</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="35" parent="8" name="summary">
+      <Position>3</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="36" parent="8" name="title">
+      <Position>4</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <index id="37" parent="8" name="sqlite_autoindex_Singlepage_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>singlepageid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="8">
+      <ColNames>singlepageid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Singlepage_1</UnderlyingIndexName>
+    </key>
+    <column id="39" parent="9" name="userid">
+      <DataType>text(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="9" name="password">
+      <Position>1</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="41" parent="9" name="role">
+      <Position>2</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <column id="42" parent="9" name="username">
+      <Position>3</Position>
+      <DataType>text(255)|0</DataType>
+    </column>
+    <index id="43" parent="9" name="sqlite_autoindex_Users_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="9">
+      <ColNames>userid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_Users_1</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="10" name="carouselid">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="10" name="content">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="47" parent="10" name="discription">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="48" parent="10" name="pic">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="49" parent="10" name="title">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="50" parent="10" name="sqlite_autoindex__Carousel_old_20190527_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>carouselid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="10">
+      <ColNames>carouselid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex__Carousel_old_20190527_1</UnderlyingIndexName>
+    </key>
+    <column id="52" parent="11" name="newsid">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="11" name="author">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="54" parent="11" name="content">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="55" parent="11" name="pbdate">
+      <Position>3</Position>
+      <DataType>bigint(255)|0</DataType>
+    </column>
+    <column id="56" parent="11" name="px">
+      <Position>4</Position>
+      <DataType>smallint(255)|0</DataType>
+    </column>
+    <column id="57" parent="11" name="title">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="58" parent="11" name="coverpic">
+      <Position>6</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="59" parent="11" name="remark">
+      <Position>7</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <index id="60" parent="11" name="sqlite_autoindex__News_old_20190527_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>newsid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="61" parent="11">
+      <ColNames>newsid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex__News_old_20190527_1</UnderlyingIndexName>
+    </key>
+    <column id="62" parent="12" name="singlepageid">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="12" name="detail">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="64" parent="12" name="img">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="65" parent="12" name="summary">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="66" parent="12" name="title">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="67" parent="12" name="sqlite_autoindex__Singlepage_old_20190527_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>singlepageid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="68" parent="12">
+      <ColNames>singlepageid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex__Singlepage_old_20190527_1</UnderlyingIndexName>
+    </key>
+    <column id="69" parent="13" name="userid">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="13" name="password">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="71" parent="13" name="role">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="72" parent="13" name="username">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="73" parent="13" name="sqlite_autoindex__Users_old_20190527_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userid</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="74" parent="13">
+      <ColNames>userid</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex__Users_old_20190527_1</UnderlyingIndexName>
+    </key>
+    <column id="75" parent="14" name="type">
+      <DataType>text|0</DataType>
+    </column>
+    <column id="76" parent="14" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="77" parent="14" name="tbl_name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="78" parent="14" name="rootpage">
+      <Position>3</Position>
+      <DataType>int|0</DataType>
+    </column>
+    <column id="79" parent="14" name="sql">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+  </database-model>
+</dataSource>
