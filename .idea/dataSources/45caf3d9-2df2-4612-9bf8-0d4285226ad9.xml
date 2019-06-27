@@ -15,87 +15,91 @@
     <schema id="9" parent="1" name="user"/>
     <schema id="10" parent="1" name="users"/>
     <schema id="11" parent="1" name="python"/>
-    <table id="12" parent="2" name="carousel"/>
-    <table id="13" parent="2" name="news"/>
-    <table id="14" parent="2" name="singlepage"/>
-    <column id="15" parent="12" name="carouselid">
+    <schema id="12" parent="1" name="kuuga"/>
+    <schema id="13" parent="1" name="rfid"/>
+    <schema id="14" parent="1" name="search"/>
+    <schema id="15" parent="1" name="studentvideos"/>
+    <table id="16" parent="2" name="carousel"/>
+    <table id="17" parent="2" name="news"/>
+    <table id="18" parent="2" name="singlepage"/>
+    <column id="19" parent="16" name="carouselid">
       <Position>1</Position>
       <DataType>varchar(38)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="12" name="pic">
+    <column id="20" parent="16" name="pic">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="17" parent="12" name="title">
+    <column id="21" parent="16" name="title">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="18" parent="12" name="discription">
+    <column id="22" parent="16" name="discription">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="19" parent="12" name="content">
+    <column id="23" parent="16" name="content">
       <Position>5</Position>
       <DataType>text|0</DataType>
     </column>
-    <key id="20" parent="12" name="PRIMARY">
+    <key id="24" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>carouselid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="21" parent="13" name="newsid">
+    <column id="25" parent="17" name="newsid">
       <Position>1</Position>
       <DataType>varchar(36)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="13" name="title">
+    <column id="26" parent="17" name="title">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="23" parent="13" name="pbdate">
+    <column id="27" parent="17" name="pbdate">
       <Position>3</Position>
       <DataType>timestamp|0</DataType>
     </column>
-    <column id="24" parent="13" name="content">
+    <column id="28" parent="17" name="content">
       <Position>4</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="25" parent="13" name="author">
+    <column id="29" parent="17" name="author">
       <Position>5</Position>
       <DataType>varchar(32)|0</DataType>
     </column>
-    <column id="26" parent="13" name="px">
+    <column id="30" parent="17" name="px">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="27" parent="13" name="PRIMARY">
+    <key id="31" parent="17" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>newsid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="28" parent="14" name="singlepageid">
+    <column id="32" parent="18" name="singlepageid">
       <Position>1</Position>
       <DataType>varchar(38)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="29" parent="14" name="img">
+    <column id="33" parent="18" name="img">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="30" parent="14" name="title">
+    <column id="34" parent="18" name="title">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="31" parent="14" name="summary">
+    <column id="35" parent="18" name="summary">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="32" parent="14" name="detail">
+    <column id="36" parent="18" name="detail">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="33" parent="14" name="PRIMARY">
+    <key id="37" parent="18" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>singlepageid</ColNames>
       <Primary>1</Primary>

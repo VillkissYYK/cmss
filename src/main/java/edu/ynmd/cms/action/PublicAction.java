@@ -1,10 +1,10 @@
 package edu.ynmd.cms.action;
 
-import edu.ynmd.cms.model.Carousel;
-import edu.ynmd.cms.model.News;
-import edu.ynmd.cms.model.Users;
+import edu.ynmd.cms.model.*;
 import edu.ynmd.cms.service.ManageService;
 import edu.ynmd.cms.tools.JwtUtil;
+import edu.ynmd.cms.vo.Parmone;
+import edu.ynmd.cms.vo.Parms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,14 +58,95 @@ public class PublicAction {
 
     @GetMapping("getCarouselList")
     @ResponseBody
-    public  List<Carousel> getCarouselList() throws Exception{
+    public List<Carousel> getCarouselList() throws Exception {
         return manageService.getCarouselList();
+    }
+
+    @GetMapping("getBookList")
+    @ResponseBody
+    public List<Book> getBookList() throws Exception {
+        return manageService.getBookList();
+    }
+
+
+    @GetMapping("getClassroomList")
+    @ResponseBody
+    public List<Classroom> getClassroomList() throws Exception {
+        return manageService.getClassroomList();
+    }
+
+    @GetMapping("getStudentList")
+    @ResponseBody
+    public List<Student> getStudentList() throws Exception {
+        return manageService.getStudentList();
+    }
+
+
+    @GetMapping("getTeacherList")
+    @ResponseBody
+    public List<Teacher> getTeacherList() throws Exception {
+        return manageService.getTeacherList();
+    }
+
+    @GetMapping("getCourseList")
+    @ResponseBody
+    public List<Course> getCourseList() throws Exception {
+        return manageService.getCourseList();
+    }
+
+
+    @PostMapping("getCourseListByParm")
+    @ResponseBody
+    public List<Course> getCourseListByParm(@RequestBody Parms parms) throws Exception {
+        List<Course> cl = new ArrayList();
+
+        switch (parms.getKey()) {
+            case "book":
+                cl = manageService.getCourseByBook(parms.getValue());
+                break;
+            case "classroom":
+                cl = manageService.getCourseByClassroom(parms.getValue());
+                break;
+            case "student":
+                cl = manageService.getCourseByStudent(parms.getValue());
+                break;
+            case "teacher":
+                cl = manageService.getCourseByTeacher(parms.getValue());
+                break;
+        }
+        return cl;
     }
 
 
 
+    @PostMapping("findByBookLike")
+    @ResponseBody
+    public List<Course> findByBookLike(@RequestBody String book)throws  Exception{
+        return manageService.findByBookLike("'%"+book+"%'");
+    }
 
+//    @PostMapping("findByBookLike")
+//    @ResponseBody
+//    public List<Course> findByBookLike(String book){
+//        return  manageService.findByBookLike("%"+book+"%");
+//    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

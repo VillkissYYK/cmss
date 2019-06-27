@@ -1,8 +1,6 @@
 package edu.ynmd.cms.action;
 
-import edu.ynmd.cms.model.Carousel;
-import edu.ynmd.cms.model.News;
-import edu.ynmd.cms.model.Singlepage;
+import edu.ynmd.cms.model.*;
 import edu.ynmd.cms.service.ManageService;
 import edu.ynmd.cms.tools.OssTools;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -434,4 +432,161 @@ public class AdminAction {
     public  Singlepage getSinglepage(@RequestBody Singlepage singlepage)throws Exception{
         return manageService.getSinglepage(singlepage.getSinglepageid());
     }
+//课程
+    @PostMapping("addBook")
+    @ResponseBody
+    public  boolean addBook(@RequestBody Book book) throws Exception{
+
+        return manageService.addBook(book);
+    }
+
+
+    @PostMapping("deleteBook")
+    @ResponseBody
+    public  boolean deleteBook(@RequestBody Book book) throws Exception{
+        return manageService.deleteBook(book.getId());
+    }
+
+
+    @PostMapping("updateBook")
+    @ResponseBody
+    public boolean updateBook(@RequestBody Book book) throws Exception{
+        return  manageService.updateBook(book);
+    }
+
+    @PostMapping("getOneBook")
+    @ResponseBody
+    public Book getOneBook(@RequestBody Book book) throws Exception{
+        return manageService.getBook(book.getId());
+    }
+
+
+    @PostMapping("getBookList")
+    @ResponseBody
+    public List<Book> getBookList() throws Exception{
+        return manageService.getBookList();
+    }
+
+//教室
+
+    @PostMapping("addClassroom")
+    @ResponseBody
+    public  boolean addClassroom(@RequestBody Classroom classroom) throws Exception{
+
+        return manageService.addClassroom(classroom);
+    }
+
+
+
+    @PostMapping("deleteClassroom")
+    @ResponseBody
+    public  boolean deleteClassroom(@RequestBody Classroom classroom) throws Exception{
+        return manageService.deleteClassroom(classroom.getId());
+    }
+
+
+    @PostMapping("updateClassroom")
+    @ResponseBody
+    public boolean updateClassroom(@RequestBody Classroom classroom) throws Exception{
+        return  manageService.updateClassroom(classroom);
+    }
+
+    @PostMapping("getOneClassroom")
+    @ResponseBody
+    public Classroom getOneClassroom(@RequestBody Classroom classroom) throws Exception{
+        return manageService.getClassroom(classroom.getId());
+    }
+
+
+    @PostMapping("getClassroomList")
+    @ResponseBody
+    public List<Classroom> getClassroomList() throws Exception{
+        return manageService.getClassroomList();
+    }
+
+
+//班级Student
+
+    @PostMapping("addStudent")
+    @ResponseBody
+    public  boolean addStudent(@RequestBody Student student) throws Exception{
+
+        return manageService.addStudent(student);
+    }
+
+
+    @PostMapping("deleteStudent")
+    @ResponseBody
+    public  boolean deleteStudent(@RequestBody Student student) throws Exception{
+        return manageService.deleteStudent(student.getId());
+    }
+
+
+    @PostMapping("updateStudent")
+    @ResponseBody
+    public boolean updateStudent(@RequestBody Student student) throws Exception{
+        return  manageService.updateStudent(student);
+    }
+
+    @PostMapping("getOneStudent")
+    @ResponseBody
+    public Student getOneStudent(@RequestBody Student student) throws Exception{
+        return manageService.getStudent(student.getId());
+    }
+
+
+    @PostMapping("getStudentList")
+    @ResponseBody
+    public List<Student> getStudentList() throws Exception{
+        return manageService.getStudentList();
+    }
+
+//教师
+    @PostMapping("addTeacher")
+    @ResponseBody
+    public  boolean addTeacher(@RequestBody Teacher teacher) throws Exception{
+    return manageService.addTeacher(teacher);
+}
+
+
+    @PostMapping("deleteTeacher")
+    @ResponseBody
+    public  boolean deleteTeacher(@RequestBody Teacher teacher) throws Exception{
+        return manageService.deleteTeacher(teacher.getId());
+    }
+
+
+    @PostMapping("updateTeacher")
+    @ResponseBody
+    public boolean updateTeacher(@RequestBody Teacher teacher) throws Exception{
+        return  manageService.updateTeacher(teacher);
+    }
+
+    @PostMapping("getOneTeacher")
+    @ResponseBody
+    public Teacher getOneTeacher(@RequestBody Teacher theacher) throws Exception{
+        return manageService.getTeacher(theacher.getId());
+    }
+
+
+    @PostMapping("getTeacherList")
+    @ResponseBody
+    public List<Teacher> getTeacherList() throws Exception{
+        return manageService.getTeacherList();
+    }
+
+
+
+
+//Course添加
+
+    @PostMapping("addCourse")
+    @ResponseBody
+    public boolean addCourse(@RequestBody Course course) throws Exception{
+
+        return  manageService.addCourse(course);
+
+    }
+
+
 }
